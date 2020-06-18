@@ -8,7 +8,7 @@ category: 前端
 <!--more-->
 
 ## 效果展示
-![弹窗效果展示](https://images.cnblogs.com/cnblogs_com/binglicheng/1776873/o_200530051807%E5%BC%B9%E7%AA%97%E6%95%88%E6%9E%9C%E5%B1%95%E7%A4%BA.png)
+![弹窗效果展示](https://raw.githubusercontent.com/icooode/images-of-website/master/blog/electron/200530051807.png)
 
 我在百度搜索到，electon如果需要用到这个`Notification`功能，那么需要注册个AppID，看到这里我是一脸懵逼(找不到那个问题贴了)。
 又百度发现，害，原来这么简单啊。
@@ -26,8 +26,8 @@ category: 前端
 ```
 $testBtn.on('click', () => {
   let option = {
-    title: "你订阅冰黎的博客更新了",                            // 通知标题
-    body: "更新内容blablala的",                               // 内容
+    title: "你订阅冰黎的博客更新了",                          // 通知标题
+    body: "更新内容blablala的",                              // 内容
     icon: "../favicon.ico",                                 // 图标
     href: 'https://www.cnblogs.com/binglicheng/'            // 地址
   };

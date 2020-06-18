@@ -8,7 +8,7 @@ category: [前端]
 > 前言 康虎云是真的毒，全网几乎搜不到关于他的问题解决方案。
 <!--more-->
 ## 设计器
-![设计器](https://images.cnblogs.com/cnblogs_com/binglicheng/1772887/o_200525072554%E5%BA%B7%E8%99%8E%E4%BA%91%E6%8A%A5%E8%A1%A8%E8%AE%BE%E8%AE%A1%E5%99%A8.png)
+![设计器](https://raw.githubusercontent.com/icooode/images-of-website/master/blog/kanghuyun/200525072554.png)
 以上是我的康虎云内所有字段。
 1. `userInfo`
 2. `feedback`
@@ -97,17 +97,17 @@ category: [前端]
 ```
 ## 效果图
 ### 这是我拉长明细数据 DetailData的效果
-![效果图1](https://images.cnblogs.com/cnblogs_com/binglicheng/1772887/o_200525073306%E6%95%88%E6%9E%9C%E5%9B%BE1.png)
+![效果图1](https://raw.githubusercontent.com/icooode/images-of-website/master/blog/kanghuyun/200525073306.png)
 ### 这是我拉短明细数据 DetailData的效果
-![效果图2](https://images.cnblogs.com/cnblogs_com/binglicheng/1772887/o_200525073319%E6%95%88%E6%9E%9C%E5%9B%BE2.png)
+![效果图2](https://raw.githubusercontent.com/icooode/images-of-website/master/blog/kanghuyun/200525073319.png)
 
 ## 顺带一嘴哈
 如果右边没有显示数据和字段。也就是这个。
-![数组字段](https://img2020.cnblogs.com/blog/1822317/202005/1822317-20200525154337395-2144357757.png)
+![数组字段](https://raw.githubusercontent.com/icooode/images-of-website/master/blog/kanghuyun/200525074313.png)
 那么我推荐你最好先把json数据模拟好。
 1. 打开`康虎云路径/cfprint/cfprint.exe`文件。这一步是启动康虎云，如果你已经启动了则无视这步骤。
 2. 双击***设计***，把你刚刚模拟好的JSON数据放进去，点击设计按钮，你就会发现右侧出现这些字段了。
-![点击设计按钮](https://img2020.cnblogs.com/blog/1822317/202005/1822317-20200525154721385-1649728633.png)
+![点击设计按钮](https://raw.githubusercontent.com/icooode/images-of-website/master/blog/kanghuyun/200525074713.png)
 
 ## 大功告成
 这也算是大功告成了吧！
