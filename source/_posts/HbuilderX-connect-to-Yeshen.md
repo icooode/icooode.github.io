@@ -19,7 +19,7 @@ category: Ide
 # 四、配置HbuilderX
 在这一步，你将配置好启动的浏览器项。
 点击任务栏工具->设置->运行配置->浏览器运行配置。
-![浏览器运行配置](https://i.loli.net/2019/09/06/v1UnkthNPRJm2db.png)
+![浏览器运行配置](https://raw.githubusercontent.com/icooode/images-of-website/master/blog/hbuilder/2019090601.png)
 一般来说谷歌浏览器是在图中那个路径下。
 
 # 五、配置模拟器
@@ -31,7 +31,7 @@ category: Ide
 
 2.打开cmd窗口
 &emsp;a. 在当前资源管理器地址输入cmd（推荐）
-![cmd](https://i.loli.net/2019/09/06/BYlN4MwkWX2Tyhs.png)
+![cmd](https://raw.githubusercontent.com/icooode/images-of-website/master/blog/hbuilder/2019090602.png)
 &emsp;b. win+r->cmd->通过cd定位到夜神模拟器bin文件夹目录下（略微麻烦且复杂）
 
 3.连接
@@ -50,8 +50,8 @@ nox_adb devices
 
 5.修改HbuilderX内端口
 点击任务栏工具->设置->运行配置->Android模拟器端口。
-![devices](https://i.loli.net/2019/09/06/zetENkoA1vnXTBM.png)
-![Android模拟器端口](https://i.loli.net/2019/09/06/AhTwYV2XHyS5pq1.png)
+![devices](https://raw.githubusercontent.com/icooode/images-of-website/master/blog/hbuilder/2019090603.png)
+![Android模拟器端口](https://raw.githubusercontent.com/icooode/images-of-website/master/blog/hbuilder/2019090604.png)
 
 6.再次连接
 ```
@@ -71,7 +71,7 @@ adb connect 127.0.0.1:62001
 # 六、使用模拟器
 到这一步，你已将大功告成了，就差应用啦。
 点击工具栏->运行->运行到手机或模拟器->运行。
-![运行](https://i.loli.net/2019/09/06/yV3S1bTnNihgeDG.png)
+![运行](https://raw.githubusercontent.com/icooode/images-of-website/master/blog/hbuilder/2019090605.png)
 
 # 七、大功告成
 大功告成，耐心等待即可。
