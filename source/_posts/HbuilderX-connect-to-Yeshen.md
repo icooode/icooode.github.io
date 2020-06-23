@@ -4,7 +4,8 @@ date: 2019-09-06 10:19:06
 tags: [模拟器, Ide]
 category: Ide
 ---
-
+> HbuilderX连接夜神模拟器
+<!--more-->
 # 一、下载夜神模拟器
 [下载地址](https://www.yeshen.com/cn/download/fullPackage "点击下载")
 
