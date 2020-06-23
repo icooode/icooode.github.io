@@ -28,7 +28,7 @@ category: XML
 **3、一般都是修改preview和icon里的值**
 
 ---
-```
+```json
 # 仅做参考
 {
 "app":"com.tencent.structmsg",

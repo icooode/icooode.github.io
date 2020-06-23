@@ -17,7 +17,7 @@ category: [linux]
 `flush privileges;`
 这两者其实都生效了，但你还是不用密码就登进mysql里了，是不是感觉很气。
 `$ sudo mysql -u root # 进入你的mysql`
-```
+```bash
 mysql> USE mysql;
 mysql> UPDATE user SET plugin='mysql_native_password' WHERE User='root'; # 只要把plugin修改成mysql_native_password就好了
 mysql> FLUSH PRIVILEGES;

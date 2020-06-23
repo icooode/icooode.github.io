@@ -35,7 +35,7 @@ category: Ide
 &emsp;b. win+r->cmd->通过cd定位到夜神模拟器bin文件夹目录下（略微麻烦且复杂）
 
 3.连接
-```
+```bash
 # 在cmd中运行下面代码 
 nox_adb connect 127.0.0.1:62001
 ```
@@ -43,7 +43,7 @@ nox_adb connect 127.0.0.1:62001
 如果报错了，说明夜神模拟器端口不对。
 
 4.获取端口
-```
+```bash
 # 打下面代码查看当前夜神模拟器端口（请确保到这一步时，你的夜神模拟器现在还是开着的）。
 nox_adb devices
 ```
@@ -62,7 +62,7 @@ nox_adb connect 127.0.0.1:52001
 7.到HbuilderX目录
 找到在HbuilderX在桌面上的快捷方式，进入到它的根目录，进入到下面这个路径。然后在地址栏输入cmd。
 ***\HBuilderX\plugins\launcher\tools\adbs***
-```
+```bash
 # 跟夜神模拟器相连。
 # 注意：这里端口号参考第四步。
 adb connect 127.0.0.1:62001

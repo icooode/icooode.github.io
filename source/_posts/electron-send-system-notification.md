@@ -13,7 +13,7 @@ category: 前端
 我在百度搜索到，electon如果需要用到这个`Notification`功能，那么需要注册个AppID，看到这里我是一脸懵逼(找不到那个问题贴了)。
 又百度发现，害，原来这么简单啊。
 1、 先在你的`package.json`里添加：
-```bash
+```json
 "build": {
     "appId": "com.example.app"
 }

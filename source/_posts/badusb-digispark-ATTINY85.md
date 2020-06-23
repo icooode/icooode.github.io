@@ -34,7 +34,7 @@ BadUSB最早是在2014年的黑帽大会上研究人员JakobLell和Karsten Nohl�
 - 具体代码请参考第二篇参考文章。
 - 拷贝好代码后，点击upload（注意这一步骤是不需要插着Digispark）。
 - 等待arduion出现下面代码提示，具体意思：请插入你的硬件。
-```markdown
+```bash
 Running Digispark Uploader...
 Plug in device now... (will timeout in 60 seconds)
 ```

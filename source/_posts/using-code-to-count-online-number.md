@@ -9,7 +9,7 @@ category: [wordpress]
 <!--more-->
 
 ***实现代码：***
-```
+```php
 <?php
 //首先你要有读写文件的权限，首次访问肯不显示，正常情况刷新即可  
 $online_log = "maplers.dat"; //保存人数的文件到根目录,  
@@ -36,7 +36,7 @@ echo "在线人数：".$maplers."人";
 
 ***我的方式***
 在functions.php下新增一个函数。
-```
+```php
 function show_online_count() {
 	//首先你要有读写文件的权限，首次访问肯不显示，正常情况刷新即可  
 	$online_log = "maplers.dat"; //保存人数的文件到根目录,  

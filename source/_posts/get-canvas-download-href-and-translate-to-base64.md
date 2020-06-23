@@ -7,7 +7,7 @@ category: 前端
 前端实现获取canvas下载地址以及下载basse64图片格式到本地功能。
 <!--more-->
 ## 全部代码
-```
+```js
 <!DOCTYPE html>
 <html lang="en">
 
