@@ -27,7 +27,7 @@ categories:
 
 Sdk Manager是安卓的所以得去下载。
 我直接百度的SDK Manager出现的页面就是[sdk manager](https://developer.android.google.cn/studio/command-line/sdkmanager)，点进去发现这个是命令行，第一次我在其他电脑上给配置成功了，但是到我自己电脑上却失败了。所以这个办法肯定是可行的。
-<center>![下载](https://raw.githubusercontent.com/icooode/images-of-website/master/blog/unity/20191110.png "下载")</center>
+![下载](https://raw.githubusercontent.com/icooode/images-of-website/master/blog/unity/20191110.png "下载")
 
 ### 下载命令行版SDK Manager
 [点击跳转下载链接](https://developer.android.google.cn/studio)，然后快速下拉到`Command line tools only`这个地方，下载命令行的[SDK Manager](https://dl.google.com/android/repository/sdk-tools-windows-4333796.zip)。
