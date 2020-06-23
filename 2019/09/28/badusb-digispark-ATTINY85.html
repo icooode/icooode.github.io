@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.icooode.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="BadUSB最早是在2014年的黑帽大会上研究人员JakobLell和Karsten Nohl提出并展示的。不同于老式的U盘病毒，它利用了USB协议中的一个漏洞，通过模拟键盘、鼠标、网卡等从而让目标电脑执行恶意代码，达到控住主机或者窃取敏感信息等目的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="badusb-digispark-ATTINY85">
+<meta property="og:url" content="http://blog.icooode.com/2019/09/28/badusb-digispark-ATTINY85.html">
+<meta property="og:site_name" content="icooode&#39;s blog">
+<meta property="og:description" content="BadUSB最早是在2014年的黑帽大会上研究人员JakobLell和Karsten Nohl提出并展示的。不同于老式的U盘病毒，它利用了USB协议中的一个漏洞，通过模拟键盘、鼠标、网卡等从而让目标电脑执行恶意代码，达到控住主机或者窃取敏感信息等目的。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-09-28T03:45:35.000Z">
+<meta property="article:modified_time" content="2020-06-23T13:46:48.705Z">
+<meta property="article:author" content="bingli">
+<meta property="article:tag" content="BadUSB">
+<meta property="article:tag" content="Digispark">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://blog.icooode.com/2019/09/28/badusb-digispark-ATTINY85.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>badusb-digispark-ATTINY85 | icooode's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">icooode's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">DIY.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.icooode.com/2019/09/28/badusb-digispark-ATTINY85.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/icooode/images-of-website/master/blog/avatar.jpg">
+      <meta itemprop="name" content="bingli">
+      <meta itemprop="description" content="自己动手干">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="icooode's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          badusb-digispark-ATTINY85<a href="https://github.com/icooode/icooode.github.io/tree/gh-pages/source/_posts/badusb-digispark-ATTINY85.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pencil-alt"></i></a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-28 11:45:35" itemprop="dateCreated datePublished" datetime="2019-09-28T11:45:35+08:00">2019-09-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-23 21:46:48" itemprop="dateModified" datetime="2020-06-23T21:46:48+08:00">2020-06-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%9D%82%E8%B0%88/" itemprop="url" rel="index"><span itemprop="name">博客杂谈</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>995</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>BadUSB最早是在2014年的黑帽大会上研究人员JakobLell和Karsten Nohl提出并展示的。不同于老式的U盘病毒，它利用了USB协议中的一个漏洞，通过模拟键盘、鼠标、网卡等从而让目标电脑执行恶意代码，达到控住主机或者窃取敏感信息等目的。</p>
+<a id="more"></a>
+
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>知道badusb已经好久了，但是迟迟没有购买，原因嘛。。很简单：我菜嘛，怕买来了用不起来，怕需要驱动。。（但我还是在几个月后买了..）</p>
+<h1 id="购买"><a href="#购买" class="headerlink" title="购买"></a>购买</h1><p>我用的是Digispark一个基于ATTINY85微控制器的USB开发板，体积小且价钱便宜。<br>淘宝一个差不多10块5吧。<a href="https://item.taobao.com/item.htm?spm=a1z09.2.0.0.bd8e2e8dWUGoEB&id=573691183135&_u=s2q1ujspea55" target="_blank" rel="noopener" title="点击打开淘宝">淘宝地址</a></p>
+<h1 id="开搞-踩坑"><a href="#开搞-踩坑" class="headerlink" title="开搞(踩坑)"></a>开搞<em><del>(踩坑)</del></em></h1><h2 id="a-踩坑准备所需"><a href="#a-踩坑准备所需" class="headerlink" title="a.踩坑准备所需"></a>a.踩坑准备所需</h2><ul>
+<li>arduino(IDE) <a href="https://www.arduino.cc/en/Main/Software" target="_blank" rel="noopener" title="点击下载IDE">下载地址</a></li>
+<li>digispark drive(驱动) <a href="https://github.com/digistump/DigistumpArduino/releases/download/1.6.7/Digistump.Drivers.zip" target="_blank" rel="noopener" title="点击下载驱动">下载地址</a></li>
+</ul>
+<h2 id="b-具体配置教程"><a href="#b-具体配置教程" class="headerlink" title="b.具体配置教程"></a>b.具体配置教程</h2><ul>
+<li>请参考第一篇参考文章。</li>
+<li>需要注意的就是在首选项内添加JSON。</li>
+<li>下载好后选择Tools(工具) -&gt; Borad(开发板) - &gt; Digispark (Default - 16.5mhz) </li>
+<li>再选择Tools(工具) -&gt; Programmer(编辑器) -&gt; USBtinyISP</li>
+</ul>
+<h1 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h1><h2 id="a-开始烧录"><a href="#a-开始烧录" class="headerlink" title="a.开始烧录"></a>a.开始烧录</h2><ul>
+<li>具体代码请参考第二篇参考文章。</li>
+<li>拷贝好代码后，点击upload（注意这一步骤是不需要插着Digispark）。</li>
+<li>等待arduion出现下面代码提示，具体意思：请插入你的硬件。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Running Digispark Uploader...</span><br><span class="line">Plug <span class="keyword">in</span> device now... (will timeout <span class="keyword">in</span> 60 seconds)</span><br></pre></td></tr></table></figure></li>
+<li>耐心等待即可。</li>
+</ul>
+<h2 id="b-开始踩坑"><a href="#b-开始踩坑" class="headerlink" title="b.开始踩坑"></a>b.开始踩坑</h2><ul>
+<li>你会发现烧录成功后，烧录的代码只会执行一次,并且其他电脑不会自动安装驱动。(<del>抓狂</del>)</li>
+<li>我加了相关的Q群，查了百度大量信息，最后发现可能是我的Digispark内置的Bootloader版本太低了。</li>
+<li>具体升级Bootloader方法，请参考第三篇参考文章。</li>
+<li>如果嫌弃下载慢的话，<a href="https://www.lanzous.com/b00n4a0ib" target="_blank" rel="noopener" title="点击打开蓝奏云">蓝奏云</a>密码:3k0e，我本来还想把IDE分享，结果大于180M无法上传，所以就只能自己慢慢下载～</li>
+</ul>
+<h2 id="c-刷完固件"><a href="#c-刷完固件" class="headerlink" title="c.刷完固件"></a>c.刷完固件</h2><ul>
+<li>升级好Bootloader。</li>
+<li>再烧录一次。</li>
+<li>再用其他没有digispark驱动电脑试试</li>
+</ul>
+<h1 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h1><p>大功告成！</p>
+<p><strong><em>最后的声明：本人仅做研究，兴趣爱好。并分享我的踩坑经验。<br>未经允许不得传播。<br>本文仅供学习之用，不负任何法律责任。</em></strong></p>
+<hr>
+<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p>一、 <a href="https://cloud.tencent.com/developer/article/1088490" target="_blank" rel="noopener" title="点击打开">7块钱的BadUSB</a><br>二、 <a href="https://lzy-wi.github.io/2018/06/12/badusb/" target="_blank" rel="noopener" title="点击打开">badusb的学习记录&amp;入侵windows主机</a><br>三、 <a href="https://blog.csdn.net/sxhexin/article/details/87914649" target="_blank" rel="noopener" title="点击打开">DigiSpark更新Bootloader</a></p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>bingli
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://blog.icooode.com/2019/09/28/badusb-digispark-ATTINY85.html" title="badusb-digispark-ATTINY85">http://blog.icooode.com/2019/09/28/badusb-digispark-ATTINY85.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/BadUSB/" rel="tag"># BadUSB</a>
+              <a href="/tags/Digispark/" rel="tag"># Digispark</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div style="color:rgb(0, 0, 0); font-size:13px; letter-spacing:3px;">本篇文章对你是否有帮助呢~？</div>
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/09/06/HbuilderX-connect-to-Yeshen.html" rel="prev" title="HbuilderX连接夜神模拟器">
+      <i class="fa fa-chevron-left"></i> HbuilderX连接夜神模拟器
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/10/13/how-to-install-electron-vue.html" rel="next" title="安装electron-vue之踩坑">
+      安装electron-vue之踩坑 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80NjYyNC8yMzEzNA=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#购买"><span class="nav-number">2.</span> <span class="nav-text">购买</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开搞-踩坑"><span class="nav-number">3.</span> <span class="nav-text">开搞(踩坑)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#a-踩坑准备所需"><span class="nav-number">3.1.</span> <span class="nav-text">a.踩坑准备所需</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#b-具体配置教程"><span class="nav-number">3.2.</span> <span class="nav-text">b.具体配置教程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#踩坑"><span class="nav-number">4.</span> <span class="nav-text">踩坑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#a-开始烧录"><span class="nav-number">4.1.</span> <span class="nav-text">a.开始烧录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#b-开始踩坑"><span class="nav-number">4.2.</span> <span class="nav-text">b.开始踩坑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c-刷完固件"><span class="nav-number">4.3.</span> <span class="nav-text">c.刷完固件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#大功告成"><span class="nav-number">5.</span> <span class="nav-text">大功告成</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文章"><span class="nav-number">6.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="bingli"
+      src="https://raw.githubusercontent.com/icooode/images-of-website/master/blog/avatar.jpg">
+  <p class="site-author-name" itemprop="name">bingli</p>
+  <div class="site-description" itemprop="description">自己动手干</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/icooode" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;icooode" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:binglicf@outlook.com" title="E-Mail → mailto:binglicf@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友链
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.madebug.net/" title="https:&#x2F;&#x2F;blog.madebug.net&#x2F;" rel="noopener" target="_blank">m4d3bug's blog</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">bingli</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">16k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">14 分钟</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+  <script>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id    : 25787,
+      el    : 'wpac-rating',
+      color : 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>

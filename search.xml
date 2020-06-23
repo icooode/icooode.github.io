@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>HbuilderX连接夜神模拟器</title>
+    <url>/2019/09/06/HbuilderX-connect-to-Yeshen.html</url>
+    <content><![CDATA[<blockquote>
+<p>HbuilderX连接夜神模拟器</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="一、下载夜神模拟器"><a href="#一、下载夜神模拟器" class="headerlink" title="一、下载夜神模拟器"></a>一、下载夜神模拟器</h1><p><a href="https://www.yeshen.com/cn/download/fullPackage" target="_blank" rel="noopener" title="点击下载">下载地址</a></p>
+<h1 id="二、下载Hbuilder"><a href="#二、下载Hbuilder" class="headerlink" title="二、下载Hbuilder"></a>二、下载Hbuilder</h1><p><a href="https://www.dcloud.io/hbuilderx.html" target="_blank" rel="noopener" title="点击下载">下载地址</a><br>点击DOWNLOAD然后选择<strong><em>APP开发版</em></strong>，耐心等待下载即可。</p>
+<h1 id="三、启动HbuilderX、夜神模拟器"><a href="#三、启动HbuilderX、夜神模拟器" class="headerlink" title="三、启动HbuilderX、夜神模拟器"></a>三、启动HbuilderX、夜神模拟器</h1><p>在这一步，我将默认你已经打开了HbuilderX和夜神模拟器，否则将无法进行下一步操作。</p>
+<h1 id="四、配置HbuilderX"><a href="#四、配置HbuilderX" class="headerlink" title="四、配置HbuilderX"></a>四、配置HbuilderX</h1><p>在这一步，你将配置好启动的浏览器项。<br>点击任务栏工具-&gt;设置-&gt;运行配置-&gt;浏览器运行配置。<br><img src="https://raw.githubusercontent.com/icooode/images-of-website/master/blog/hbuilder/2019090601.png" alt="浏览器运行配置"><br>一般来说谷歌浏览器是在图中那个路径下。</p>
+<h1 id="五、配置模拟器"><a href="#五、配置模拟器" class="headerlink" title="五、配置模拟器"></a>五、配置模拟器</h1><p>到了最令人紧张刺激兴奋的环节，这一步后你将可以用HbuilderX连接上夜神模拟器啦。</p>
+<p>1.首先你先进入夜神模拟器bin模拟器下<br>&emsp;a. 右键你桌面上夜神模拟器快捷方式-&gt;选择属性（R）-&gt;打开文件所在位置（推荐）。<br>&emsp;b. 或者直接通过打开我的电脑-&gt;寻找夜神模拟器安装路径。</p>
+<p>2.打开cmd窗口<br>&emsp;a. 在当前资源管理器地址输入cmd（推荐）<br><img src="https://raw.githubusercontent.com/icooode/images-of-website/master/blog/hbuilder/2019090602.png" alt="cmd"><br>&emsp;b. win+r-&gt;cmd-&gt;通过cd定位到夜神模拟器bin文件夹目录下（略微麻烦且复杂）</p>
+<p>3.连接</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在cmd中运行下面代码 </span></span><br><span class="line">nox_adb connect 127.0.0.1:62001</span><br></pre></td></tr></table></figure>
+<p>如果没报错，跳到第五步。<br>如果报错了，说明夜神模拟器端口不对。</p>
+<p>4.获取端口</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 打下面代码查看当前夜神模拟器端口（请确保到这一步时，你的夜神模拟器现在还是开着的）。</span></span><br><span class="line">nox_adb devices</span><br></pre></td></tr></table></figure>
+
+<p>5.修改HbuilderX内端口<br>点击任务栏工具-&gt;设置-&gt;运行配置-&gt;Android模拟器端口。<br><img src="https://raw.githubusercontent.com/icooode/images-of-website/master/blog/hbuilder/2019090603.png" alt="devices"><br><img src="https://raw.githubusercontent.com/icooode/images-of-website/master/blog/hbuilder/2019090604.png" alt="Android模拟器端口"></p>
+<p>6.再次连接</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 这里端口号取决于第4步获取到的端口</span><br><span class="line">nox_adb connect 127.0.0.1:52001</span><br></pre></td></tr></table></figure>
+
+<p>7.到HbuilderX目录<br>找到在HbuilderX在桌面上的快捷方式，进入到它的根目录，进入到下面这个路径。然后在地址栏输入cmd。<br><strong><em>\HBuilderX\plugins\launcher\tools\adbs</em></strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 跟夜神模拟器相连。</span></span><br><span class="line"><span class="comment"># 注意：这里端口号参考第四步。</span></span><br><span class="line">adb connect 127.0.0.1:62001</span><br></pre></td></tr></table></figure>
+
+<h1 id="六、使用模拟器"><a href="#六、使用模拟器" class="headerlink" title="六、使用模拟器"></a>六、使用模拟器</h1><p>到这一步，你已将大功告成了，就差应用啦。<br>点击工具栏-&gt;运行-&gt;运行到手机或模拟器-&gt;运行。<br><img src="https://raw.githubusercontent.com/icooode/images-of-website/master/blog/hbuilder/2019090605.png" alt="运行"></p>
+<h1 id="七、大功告成"><a href="#七、大功告成" class="headerlink" title="七、大功告成"></a>七、大功告成</h1><p>大功告成，耐心等待即可。</p>
+<hr>
+<p>参考文章：<br><a href="https://www.yeshen.com/faqs/HJwD1yQe-" target="_blank" rel="noopener" title="点击浏览">HBuilder使用夜神模拟器调试Android应用</a><br><a href="https://www.cnblogs.com/stulzq/p/5123875.html" target="_blank" rel="noopener" title="点击浏览">HBuilder使用夜神模拟器调试Android应用</a></p>
+]]></content>
+      <categories>
+        <category>Ide</category>
+      </categories>
+      <tags>
+        <tag>模拟器</tag>
+        <tag>Ide</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Unity Build Android APP</title>
+    <url>/2019/11/10/Unity-Build-Android-APP-error.html</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul>
+<li>原先我愉快地使用着unity2017de的LTS（稳定版）</li>
+<li>但不知道为什么vuforia无法显示识别图</li>
+<li>于是我就把2017的Unity给卸载了</li>
+<li>卸载了再打包随之问题也浮现出来了…</li>
+</ul>
+<p>跟随我的文字去看看如何解决吧～</p>
+<a id="more"></a>
+
+<h2 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h2><p>升级到新版本后，第一件事情我做的是切换到安卓环境然后试试能否成功打包APK文件。报错了，提示我当前Sdk tools &lt; 26.2.6。我懵逼了。<br>显然我并没有成功打包出APK文件，不然我为什么会在这写博客，你说是吧，哈哈哈。<br>而且我发现也有很多人没成功打包出来，百度，谷歌等搜索引擎也没搜索到相应的解决方案，也有可能是我搜索技术，英文表达方式有限，所以没搜索出来，那没办法只好自己找办法。</p>
+<h2 id="开干"><a href="#开干" class="headerlink" title="开干"></a>开干</h2><h3 id="发现"><a href="#发现" class="headerlink" title="发现"></a>发现</h3><p>Sdk Manager是安卓的所以得去下载。<br>我直接百度的SDK Manager出现的页面就是<a href="https://developer.android.google.cn/studio/command-line/sdkmanager" target="_blank" rel="noopener">sdk manager</a>，点进去发现这个是命令行，第一次我在其他电脑上给配置成功了，但是到我自己电脑上却失败了。所以这个办法肯定是可行的。<br><img src="https://raw.githubusercontent.com/icooode/images-of-website/master/blog/unity/20191110.png" alt="下载" title="下载"></p>
+<h3 id="下载命令行版SDK-Manager"><a href="#下载命令行版SDK-Manager" class="headerlink" title="下载命令行版SDK Manager"></a>下载命令行版SDK Manager</h3><p><a href="https://developer.android.google.cn/studio" target="_blank" rel="noopener">点击跳转下载链接</a>，然后快速下拉到<code>Command line tools only</code>这个地方，下载命令行的<a href="https://dl.google.com/android/repository/sdk-tools-windows-4333796.zip" target="_blank" rel="noopener">SDK Manager</a>。<br>下载好后，在某个盘符下建立Sdk Manager文件夹，将下载过来的压缩包解压出来。此时你的路径结构应该是这样：<br><code>Sdk Manager &gt; tools</code><br>我们需要快速通过在cmd中定位到当前路径，所以我们要进<code>/tools/bin</code>路径下，在当前地址栏输入<code>cmd</code>，这样我们就快速定位到当前路径。</p>
+<h3 id="下载所需的环境"><a href="#下载所需的环境" class="headerlink" title="下载所需的环境"></a>下载所需的环境</h3><p><a href="https://developer.android.google.cn/studio/command-line/sdkmanager" target="_blank" rel="noopener">当前代码参考</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sdkmanager <span class="string">"platform-tools"</span> <span class="string">"platforms;android-28"</span> <span class="comment"># 这一步会需要你输入y，确认是否进行下载</span></span><br><span class="line">y <span class="comment"># 所以输入y，并且回车</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 耐心等待下载完成</span></span><br><span class="line"></span><br><span class="line">sdkmanager <span class="string">"build-tools;29.0.0"</span></span><br><span class="line"><span class="comment"># 大功告成</span></span><br></pre></td></tr></table></figure>
+
+<p>此时，我们已经完成本次文章想达到的目的了～恭喜你！</p>
+<h2 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h2><p>大功告成！可以在Unity打包你的Android程序了。</p>
+]]></content>
+      <categories>
+        <category>Unity</category>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Unity</tag>
+        <tag>Sdk Manamager</tag>
+        <tag>Vuforia</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Unity之Specified cast is not valid.报错</title>
+    <url>/2020/04/24/Unity-Specified-cast-is-not-valid-error.html</url>
+    <content><![CDATA[<p>Unity之Specified cast is not valid报错，原来是类型引起的锅。</p>
+<a id="more"></a>
+<p><strong><em>Unity之Specified cast is not valid.报错</em></strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">foreach (Gameobject child in Instance.slotGrid.gameObject.transform)</span><br><span class="line">&#123;</span><br><span class="line">    Destroy(child.gameObject);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我调试了一会儿，发现百思不得其解，就百度了下这个错误，然后大概猜出这应该是个类型导致的错误。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">foreach (Transform child in Instance.slotGrid.gameObject.transform)</span><br><span class="line">&#123;</span><br><span class="line">    Destroy(child.gameObject.gameobject);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>再在Unity中运行，没有报错了！</p>
+<p>总结：Unity 报错“Specified cast is not valid”，是类型错误。</p>
+]]></content>
+      <categories>
+        <category>Unity</category>
+      </categories>
+      <tags>
+        <tag>Unity</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>badusb-digispark-ATTINY85</title>
+    <url>/2019/09/28/badusb-digispark-ATTINY85.html</url>
+    <content><![CDATA[<p>BadUSB最早是在2014年的黑帽大会上研究人员JakobLell和Karsten Nohl提出并展示的。不同于老式的U盘病毒，它利用了USB协议中的一个漏洞，通过模拟键盘、鼠标、网卡等从而让目标电脑执行恶意代码，达到控住主机或者窃取敏感信息等目的。</p>
+<a id="more"></a>
+
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>知道badusb已经好久了，但是迟迟没有购买，原因嘛。。很简单：我菜嘛，怕买来了用不起来，怕需要驱动。。（但我还是在几个月后买了..）</p>
+<h1 id="购买"><a href="#购买" class="headerlink" title="购买"></a>购买</h1><p>我用的是Digispark一个基于ATTINY85微控制器的USB开发板，体积小且价钱便宜。<br>淘宝一个差不多10块5吧。<a href="https://item.taobao.com/item.htm?spm=a1z09.2.0.0.bd8e2e8dWUGoEB&id=573691183135&_u=s2q1ujspea55" target="_blank" rel="noopener" title="点击打开淘宝">淘宝地址</a></p>
+<h1 id="开搞-踩坑"><a href="#开搞-踩坑" class="headerlink" title="开搞(踩坑)"></a>开搞<em><del>(踩坑)</del></em></h1><h2 id="a-踩坑准备所需"><a href="#a-踩坑准备所需" class="headerlink" title="a.踩坑准备所需"></a>a.踩坑准备所需</h2><ul>
+<li>arduino(IDE) <a href="https://www.arduino.cc/en/Main/Software" target="_blank" rel="noopener" title="点击下载IDE">下载地址</a></li>
+<li>digispark drive(驱动) <a href="https://github.com/digistump/DigistumpArduino/releases/download/1.6.7/Digistump.Drivers.zip" target="_blank" rel="noopener" title="点击下载驱动">下载地址</a></li>
+</ul>
+<h2 id="b-具体配置教程"><a href="#b-具体配置教程" class="headerlink" title="b.具体配置教程"></a>b.具体配置教程</h2><ul>
+<li>请参考第一篇参考文章。</li>
+<li>需要注意的就是在首选项内添加JSON。</li>
+<li>下载好后选择Tools(工具) -&gt; Borad(开发板) - &gt; Digispark (Default - 16.5mhz) </li>
+<li>再选择Tools(工具) -&gt; Programmer(编辑器) -&gt; USBtinyISP</li>
+</ul>
+<h1 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h1><h2 id="a-开始烧录"><a href="#a-开始烧录" class="headerlink" title="a.开始烧录"></a>a.开始烧录</h2><ul>
+<li>具体代码请参考第二篇参考文章。</li>
+<li>拷贝好代码后，点击upload（注意这一步骤是不需要插着Digispark）。</li>
+<li>等待arduion出现下面代码提示，具体意思：请插入你的硬件。<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Running Digispark Uploader...</span><br><span class="line">Plug <span class="keyword">in</span> device now... (will timeout <span class="keyword">in</span> 60 seconds)</span><br></pre></td></tr></table></figure></li>
+<li>耐心等待即可。</li>
+</ul>
+<h2 id="b-开始踩坑"><a href="#b-开始踩坑" class="headerlink" title="b.开始踩坑"></a>b.开始踩坑</h2><ul>
+<li>你会发现烧录成功后，烧录的代码只会执行一次,并且其他电脑不会自动安装驱动。(<del>抓狂</del>)</li>
+<li>我加了相关的Q群，查了百度大量信息，最后发现可能是我的Digispark内置的Bootloader版本太低了。</li>
+<li>具体升级Bootloader方法，请参考第三篇参考文章。</li>
+<li>如果嫌弃下载慢的话，<a href="https://www.lanzous.com/b00n4a0ib" target="_blank" rel="noopener" title="点击打开蓝奏云">蓝奏云</a>密码:3k0e，我本来还想把IDE分享，结果大于180M无法上传，所以就只能自己慢慢下载～</li>
+</ul>
+<h2 id="c-刷完固件"><a href="#c-刷完固件" class="headerlink" title="c.刷完固件"></a>c.刷完固件</h2><ul>
+<li>升级好Bootloader。</li>
+<li>再烧录一次。</li>
+<li>再用其他没有digispark驱动电脑试试</li>
+</ul>
+<h1 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h1><p>大功告成！</p>
+<p><strong><em>最后的声明：本人仅做研究，兴趣爱好。并分享我的踩坑经验。<br>未经允许不得传播。<br>本文仅供学习之用，不负任何法律责任。</em></strong></p>
+<hr>
+<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p>一、 <a href="https://cloud.tencent.com/developer/article/1088490" target="_blank" rel="noopener" title="点击打开">7块钱的BadUSB</a><br>二、 <a href="https://lzy-wi.github.io/2018/06/12/badusb/" target="_blank" rel="noopener" title="点击打开">badusb的学习记录&amp;入侵windows主机</a><br>三、 <a href="https://blog.csdn.net/sxhexin/article/details/87914649" target="_blank" rel="noopener" title="点击打开">DigiSpark更新Bootloader</a></p>
+]]></content>
+      <categories>
+        <category>博客杂谈</category>
+      </categories>
+      <tags>
+        <tag>BadUSB</tag>
+        <tag>Digispark</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>electron-read-regedit</title>
+    <url>/2019/10/15/electron-read-regedit.html</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>就是分享一下获取注册表的代码。</p>
+<a id="more"></a>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> regedit = <span class="built_in">require</span>(<span class="string">'regedit'</span>)</span><br><span class="line"><span class="keyword">const</span> regeditPath = <span class="string">'HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 开始获取注册表</span></span><br><span class="line">regedit.list([regeditPath], <span class="function"><span class="keyword">function</span> (<span class="params">err, data</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (err) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'err'</span> + err)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 遍历目录</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">in</span> data) &#123;</span><br><span class="line">    <span class="comment">// data[item].keys.length 长度</span></span><br><span class="line">    <span class="keyword">let</span> keys = data[item].keys</span><br><span class="line">      <span class="comment">// 获取相对应的项目名字</span></span><br><span class="line">      <span class="comment">// keys.length</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= keys.length; i++) &#123;</span><br><span class="line">      <span class="keyword">let</span> keyName = keys[i]</span><br><span class="line">      <span class="comment">// console.log(keys[i])</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">// 防止空项目报错</span></span><br><span class="line">      <span class="keyword">if</span> (keyName === <span class="literal">undefined</span>) &#123;</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      regedit.list([regeditPath + keyName], <span class="function"><span class="keyword">function</span> (<span class="params">err, data</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (err) &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">'err'</span> + err)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 将当前数据存放到数组</span></span><br><span class="line">        <span class="keyword">let</span> tmpArr = []</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">in</span> data) &#123;</span><br><span class="line">          tmpArr.push(data[i])</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> tmpValues = tmpArr[<span class="number">0</span>].values</span><br><span class="line">        <span class="keyword">if</span> (tmpValues !== <span class="literal">undefined</span>) &#123;</span><br><span class="line">          <span class="comment">// 首先，数据数量必须大于5，过滤无效注册表</span></span><br><span class="line">          <span class="comment">// 其次，我们要取的程序名字不能为空，也是防止报错</span></span><br><span class="line">          <span class="keyword">if</span> (<span class="built_in">Object</span>.keys(tmpValues).length &gt;= <span class="number">5</span> &amp;&amp; tmpValues[<span class="string">'DisplayName'</span>] !== <span class="literal">undefined</span>) &#123;</span><br><span class="line">            <span class="comment">// console.log('长度 ============= ' + Object.keys(tmpValues).length)</span></span><br><span class="line">            <span class="comment">// console.log('详细数据 =========== ' + tmpValues['DisplayName']['value'])</span></span><br><span class="line">            <span class="comment">// console.log('总数据 ============ ' + tmpValues)</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>Electron</category>
+      </categories>
+      <tags>
+        <tag>Electron</tag>
+        <tag>Regedit</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>electron 发起系统信息通知提示</title>
+    <url>/2020/05/30/electron-send-system-notification.html</url>
+    <content><![CDATA[<blockquote>
+<p>本着想做点啥，开始想electon既然是桌面级别程序，是不是可以发起系统信息通知呢…</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="https://raw.githubusercontent.com/icooode/images-of-website/master/blog/electron/200530051807.png" alt="弹窗效果展示"></p>
+<p>我在百度搜索到，electon如果需要用到这个<code>Notification</code>功能，那么需要注册个AppID，看到这里我是一脸懵逼(找不到那个问题贴了)。<br>又百度发现，害，原来这么简单啊。<br>1、 先在你的<code>package.json</code>里添加：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">"build": &#123;</span><br><span class="line">    "appId": "com.example.app"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>经我后面测试，发现这段其实有没有都是不影响最后弹窗效果的。</p>
+<p>2、然后在你的入口<code>main.js</code>里，添加<code>app.setUserModelId(&quot;com.electron.这里改成你package.json里name&quot;);</code>这串代码。</p>
+<p>3、最后，在你需要弹窗的地方，添加以下代码（我是绑定给按钮，所以我在按钮点击事件里添加的）：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$testBtn.on(<span class="string">'click'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> option = &#123;</span><br><span class="line">    title: <span class="string">"你订阅冰黎的博客更新了"</span>,                          <span class="comment">// 通知标题</span></span><br><span class="line">    body: <span class="string">"更新内容blablala的"</span>,                              <span class="comment">// 内容</span></span><br><span class="line">    icon: <span class="string">"../favicon.ico"</span>,                                 <span class="comment">// 图标</span></span><br><span class="line">    href: <span class="string">'https://www.cnblogs.com/binglicheng/'</span>            <span class="comment">// 地址</span></span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 创建通知并保存</span></span><br><span class="line">  <span class="keyword">let</span> hhwNotication = <span class="keyword">new</span> <span class="built_in">window</span>.Notification(option.title, option);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 当通知被点击时</span></span><br><span class="line">  hhwNotication.onclick= <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="comment">// TODO something...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="至此，本章完。"><a href="#至此，本章完。" class="headerlink" title="至此，本章完。"></a>至此，本章完。</h2><p>这是个我集合两个人的代码的文章。也是做个<code>demo</code>笔记。</p>
+<h2 id="参考网站"><a href="#参考网站" class="headerlink" title="参考网站"></a>参考网站</h2><p><a href="https://malagege.github.io/blog/2018/10/01/electron-win-10%E8%A8%AD%E5%AE%9A%E9%80%9A%E7%9F%A5-AppUserMOdelId-electron-builder%E7%9B%B8%E9%97%9C%E8%A8%AD%E5%AE%9A/" target="_blank" rel="noopener">electron win 10添加AppID</a><br><a href="https://www.jianshu.com/p/32ccce158401" target="_blank" rel="noopener">electron 消息弹窗代码</a></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>electron</tag>
+        <tag>Javacsript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>前端实现获取canvas下载地址以及下载base64图片格式到本地功能</title>
+    <url>/2020/05/24/get-canvas-download-href-and-translate-to-base64.html</url>
+    <content><![CDATA[<p>前端实现获取canvas下载地址以及下载basse64图片格式到本地功能。</p>
+<a id="more"></a>
+<h2 id="全部代码"><a href="#全部代码" class="headerlink" title="全部代码"></a>全部代码</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span><br><span class="line">    &lt;title&gt;html2canvas，实现下载&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">    &lt;ol <span class="class"><span class="keyword">class</span></span>=<span class="string">"ol"</span>&gt;</span><br><span class="line">        &lt;li&gt;test&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">        &lt;li&gt;test&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;test&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">        &lt;li&gt;test&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;test&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">        &lt;li&gt;test&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;test&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">        &lt;li&gt;test&lt;/</span>li&gt;</span><br><span class="line">        asdasdasdasdas</span><br><span class="line">    &lt;<span class="regexp">/ol&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    &lt;a href="javascript:;" class="btn"&gt;点我哦&lt;/</span>a&gt;</span><br><span class="line">    &lt;a href=<span class="string">"javascript:;"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"btn2"</span> download=<span class="string">"ddd.png"</span>&gt;下载&lt;<span class="regexp">/a&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    &lt;!-- 引入Jquery --&gt;</span></span><br><span class="line"><span class="regexp">    &lt;script src="https:/</span><span class="regexp">/code.jquery.com/</span>jquery<span class="number">-3.4</span><span class="number">.1</span>.min.js<span class="string">"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">    &lt;!-- 引入html2canvas --&gt;</span></span><br><span class="line"><span class="string">    &lt;script src="</span>https:<span class="comment">//cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.js"&gt;&lt;/script&gt;</span></span><br><span class="line">    &lt;script&gt;</span><br><span class="line"></span><br><span class="line">        $(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            html2canvas(<span class="built_in">document</span>.querySelector(<span class="string">'.ol'</span>)).then(<span class="function"><span class="keyword">function</span> (<span class="params">canvas</span>) </span>&#123;</span><br><span class="line">                $(<span class="string">'.ol'</span>).remove()    <span class="comment">//移除页面上的该元素</span></span><br><span class="line">                canvas.id = <span class="string">"canvas"</span>;</span><br><span class="line">                <span class="keyword">var</span> dataURL = canvas.toDataURL(<span class="string">"image/png"</span>);</span><br><span class="line">                $(<span class="built_in">document</span>.body).data(<span class="string">'url'</span>, dataURL);</span><br><span class="line">                <span class="built_in">document</span>.body.appendChild(canvas);    <span class="comment">//像页面中添加转为canvas之后的元素</span></span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line">            $(<span class="string">'.btn'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">var</span> dataURL = $(<span class="built_in">document</span>.body).data(<span class="string">'url'</span>);</span><br><span class="line">                <span class="keyword">var</span> tmpUrl = <span class="string">"data:application/octet-stream;base64"</span> + dataURL;</span><br><span class="line">                $(<span class="string">'.btn2'</span>).attr(<span class="string">'href'</span>, tmpUrl);</span><br><span class="line">                <span class="comment">// window.open(tmpUrl);</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br><span class="line"></span><br><span class="line">&lt;<span class="regexp">/html&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="核心代码解析："><a href="#核心代码解析：" class="headerlink" title="核心代码解析："></a>核心代码解析：</h3><ol>
+<li><code>download=&quot;ddd.png&quot;</code>，<strong><em>ddd就是文件名，.png则是文件后缀名</em></strong>。</li>
+<li>这样就是在数据前面加了<code>&quot;data:application/octet-stream;base64&quot; + dataURL</code>，就可以直接下载了。</li>
+<li>PC上测试可以下载，手机上也测试可以下载。</li>
+</ol>
+<hr>
+<p>参考文章：<br>一：<a href="https://zhuanlan.zhihu.com/p/28176700" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/28176700</a></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>canvas</tag>
+        <tag>base64</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何在life主题上启用Disqus评论</title>
+    <url>/2019/08/15/hexo-theme-life-enable-disqus.html</url>
+    <content><![CDATA[<p>如何在life主题上启用Disqus评论</p>
+<a id="more"></a>
+<h2 id="如何正确的配置hexo-gt-life主题Disqus评论"><a href="#如何正确的配置hexo-gt-life主题Disqus评论" class="headerlink" title="如何正确的配置hexo-&gt;life主题Disqus评论"></a>如何正确的配置hexo-&gt;life主题Disqus评论</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Disqus配置，填是否开启和，你的Disqus站点名</span></span><br><span class="line">disqus:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  name: your-nickname</span><br></pre></td></tr></table></figure>
+<p>我查了下，有人说这个是你的username，也就是在<a href="https://disqus.com/admin/settings/general/" target="_blank" rel="noopener">Disqus常规</a>下的Account。<br>我将主题内_config.yml修改成username，修改保存后，发现无法加载出Disqus评论。<br>于是我又查啊查，终于…我找到了（请看）：<em>请看参考文章第一篇。</em><br>于是我修改了我的配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">disqus:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  name: blog-your-nickname-com.disqus.com</span><br></pre></td></tr></table></figure>
+<p>修改之后发现是可以正常显示，但是问题它又来了，HTTPs协议报此网站不安全。<br>谷歌还能加载评论，但是显示不安全。<br>火狐直接就拦截了请求。<br>Hmm?我的心情就爆炸了。<br>我通过控制大法发现它的核心其实是请求一个JS文件，达到最后呈现评论的效果。但是我发现我的请求链接似乎有点怪怪的…我的心情：？？？，什么鬼（详情吐槽请看B站张全蛋，恩，跟那个差不多）<br><code>https://blog-you-nickname-com.disqus.com.disqus.com/embed.js</code><br>虽然心情很爆炸。但是我觉得我整个网站只有配置文件有影响这个，所以我把配置文件里的disqus.com干掉了。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">disqus:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  name: blog-your-nickname-com</span><br></pre></td></tr></table></figure>
+<p>再刷新，正常显示以及HTTPs都显示正常。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><strong>1、配置文件内name是你的Shortname，而不是你的username。</strong><br><strong>2、Disqus需要科学上网，并且登录某一方平台才能参与评论（例如，谷歌，脸书）</strong><br><strong>3、Disqus挺好用的</strong></p>
+<hr>
+<p>参考文章：<br><a href="https://github.com/iissnan/theme-next-docs/issues/86" target="_blank" rel="noopener">1、正确的设置了disqus_shortname，界面却无法加载disqus</a></p>
+]]></content>
+      <categories>
+        <category>博客杂谈</category>
+      </categories>
+      <tags>
+        <tag>Disqus</tag>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安装electron-vue之踩坑</title>
+    <url>/2019/10/13/how-to-install-electron-vue.html</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我想搞一个Windows桌面软件，但是E语言无法读取到注册表，就只能选择用这个。</p>
+<ul>
+<li>什么？你问我学我unity的为什么不用C#写。</li>
+<li>答：我不会啊。</li>
+<li>为什么用electron</li>
+<li>答：因为我除了unity好好学之外，还有就是JS好好学了。<a id="more"></a>
+
+</li>
+</ul>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>不知道你们会选择什么环境，我选择的是linux(ubuntu)作为我的开发环境。<br>Electron由Node.js+Chromium+Native APIs构成。</p>
+<h3 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h3><p>因此你需要Node.js。详细的安装请自行百度。<br>By the way, 你的安装路径中最好别带有中文字符，如果不会的话，傻瓜式安装即可。</p>
+<h2 id="安装Electron"><a href="#安装Electron" class="headerlink" title="安装Electron"></a>安装Electron</h2><h3 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h3><p>我尝试过用npm下载Electron，不过那速度很美丽。所以我选择了淘宝国内镜像。</p>
+<h3 id="cnpm"><a href="#cnpm" class="headerlink" title="cnpm"></a>cnpm</h3><p>通过npm安装cnpm…这速度当然非常美丽。<br>建议边吃饭边看电视边看小说，然后等待。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<h3 id="通过cnpm安装Electron"><a href="#通过cnpm安装Electron" class="headerlink" title="通过cnpm安装Electron"></a>通过cnpm安装Electron</h3><p>全局安装electron，可能会有权限问题所以使用sudo来进行安装。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo cnpm install -g electron</span><br></pre></td></tr></table></figure>
+
+<h2 id="启动Electron"><a href="#启动Electron" class="headerlink" title="启动Electron"></a>启动Electron</h2><h3 id="通过Electron提供的快速工程打开一个简单的electron项目"><a href="#通过Electron提供的快速工程打开一个简单的electron项目" class="headerlink" title="通过Electron提供的快速工程打开一个简单的electron项目"></a>通过Electron提供的快速工程打开一个简单的electron项目</h3><p><a href="https://electronjs.org/docs/tutorial/first-app#%E5%B0%9D%E8%AF%95%E6%AD%A4%E4%BE%8B" target="_blank" rel="noopener" title="打开教程">教程地址</a><br>当然你这一步骤需要git，所以你还额外需要安装git。百度一下，自己动一下手。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 克隆这仓库</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/electron/electron-quick-start</span><br><span class="line"><span class="comment"># 进入仓库</span></span><br><span class="line"><span class="built_in">cd</span> electron-quick-start</span><br><span class="line"><span class="comment"># 安装依赖库</span></span><br><span class="line">npm install</span><br><span class="line"><span class="comment"># 运行应用</span></span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+<p>如果程序正常运行的话，你会看见弹出一个electron工程窗口！</p>
+<h3 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h3><p>完结！<del>开玩笑的</del><br>当然，你已经成功创建了一个electron项目，即使他还是那么简陋。所以它还仅仅不够。<br>以下<a href="https://molunerfinn.com/electron-vue-1/#electron-vue%E5%AE%89%E8%A3%85" target="_blank" rel="noopener" title="访问代码出处">代码出处</a></p>
+<h2 id="安装Electron-vue"><a href="#安装Electron-vue" class="headerlink" title="安装Electron-vue"></a>安装Electron-vue</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 如果你没有vue-cli的话需要全局安装</span></span><br><span class="line">npm install -g vue-cli</span><br><span class="line"><span class="comment"># 然后使用vue-cli来安装electron-vue的模板</span></span><br><span class="line">vue init simulatedgreg/electron-vue my-project</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装依赖</span></span><br><span class="line"><span class="built_in">cd</span> my-project</span><br><span class="line">yarn <span class="comment"># or npm install</span></span><br><span class="line"><span class="comment"># 进入开发模式</span></span><br><span class="line">yarn run dev <span class="comment"># or npm run dev</span></span><br></pre></td></tr></table></figure>
+<h3 id="npm-install-正文开始"><a href="#npm-install-正文开始" class="headerlink" title="npm install(正文开始)"></a>npm install<del>(正文开始)</del></h3><p>安装依赖，实际上我是在这步才安装cnpm，因为npm的下载速度实在太美丽。</p>
+<h3 id="cnpm-install"><a href="#cnpm-install" class="headerlink" title="cnpm install"></a>cnpm install</h3><p>安装所需的依赖。然而，我使用这步安装完所有的依赖，但我执行cnpm run dev又出问题了。所以我不得不安装yarn。</p>
+<h3 id="yarn"><a href="#yarn" class="headerlink" title="yarn"></a>yarn</h3><h4 id="安装yarn"><a href="#安装yarn" class="headerlink" title="安装yarn"></a>安装yarn</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 我是使用aptitude来安装，win/mac请忽视这一步</span></span><br><span class="line">$ sudo aptitude update &amp;&amp; sudo aptitude install yarn</span><br><span class="line"><span class="comment"># or sudo apt-get update &amp;&amp; sudo apt-get install yarn</span></span><br></pre></td></tr></table></figure>
+<h4 id="踩坑yarn"><a href="#踩坑yarn" class="headerlink" title="踩坑yarn"></a>踩坑yarn</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 当我cd到my-project文件</span></span><br><span class="line">$ yarn</span><br><span class="line">00h00m00s 0/0: : ERROR: There are no scenarios; must have at least one.</span><br><span class="line"><span class="comment"># 却收获一个错误</span></span><br><span class="line"><span class="comment"># 经过搜索可能是yarn版本低的问题</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 当然，如果你没报错的话，请忽视这一步骤</span></span><br><span class="line">$ sudo apt remove yarn</span><br><span class="line"></span><br><span class="line">$ curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">"deb https://dl.yarnpkg.com/debian/ stable main"</span> | sudo tee /etc/apt/sources.list.d/yarn.list</span><br><span class="line"></span><br><span class="line">$ sudo apt update &amp;&amp; sudo apt install yarn</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 最后在执行下yarn</span></span><br><span class="line">$ yarn</span><br><span class="line"><span class="comment"># 但是我yarn在下载依赖的时候，报错了</span></span><br><span class="line">libgconf-2.so.4: cannot open shared object file: No such file or directory</span><br><span class="line"><span class="comment"># 提示缺少libgconf-2.so.4</span></span><br><span class="line"><span class="comment"># 此时只需要下载libgconf2-4即可</span></span><br><span class="line">$ sudo apt-get install libgconf2-4</span><br><span class="line"><span class="comment"># 进入开发模式</span></span><br><span class="line">$ yarn run dev</span><br></pre></td></tr></table></figure>
+<h2 id="大功告成-1"><a href="#大功告成-1" class="headerlink" title="大功告成"></a>大功告成</h2><p>大功告成！</p>
+<hr>
+<p>参考文章：<br>一、<a href="https://electronjs.org/docs/tutorial/development-environment" target="_blank" rel="noopener" title="官方教程">官方环境配置教程</a><br>二、<a href="https://molunerfinn.com/electron-vue-1/#%E5%89%8D%E8%A8%80" target="_blank" rel="noopener" title="点击打开">Electron-vue入门</a><br>三、<a href="https://npm.taobao.org/" target="_blank" rel="noopener" title="访问cnpm淘宝镜像">cnpm淘宝镜像</a><br>四、<a href="https://stackoverflow.com/questions/53471063/yarn-error-there-are-no-scenarios-must-have-at-least-one" target="_blank" rel="noopener" title="访问stackoverflow">StackoverFLow</a><br>五、<a href="https://blog.csdn.net/eCaiFu800/article/details/79313058?utm_source=blogxgwz6" target="_blank" rel="noopener" title="访问csdn">libgconf-2.so.4</a><br>六、<a href="https://blog.csdn.net/qq_35559756/article/details/84058508" target="_blank" rel="noopener" title="访问csdn">Electron构建桌面应用</a></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>Electron</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+        <tag>ELectron</tag>
+        <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何发送XML到QQ上面</title>
+    <url>/2019/08/24/how-to-use-QQ-to-send-XML.html</url>
+    <content><![CDATA[<blockquote>
+<p>阅读本文前提是你已经知道如何将发送XML到QQ上面</p>
+</blockquote>
+<p>如果你不会的话，其实这个也很简单，就下载个机器人即可。是吧？很简单吧。<br>废话不多说，开始正文。</p>
+<a id="more"></a>
+
+<h1 id="1、寻XML、JSON代码"><a href="#1、寻XML、JSON代码" class="headerlink" title="1、寻XML、JSON代码"></a>1、寻XML、JSON代码</h1><p>你得通过某种途径获取XML代码或者JSON格式的数据。<br>我是通过<a href="http://y-8.top/" target="_blank" rel="noopener">侠客行</a>这个网站寻找XML、JSON代码。</p>
+<h1 id="2、寻利器"><a href="#2、寻利器" class="headerlink" title="2、寻利器"></a>2、寻利器</h1><p>下载机器人。<br>我用的是<a href="https://www.cleverqq.cn/" target="_blank" rel="noopener">cleverqq（原IRQQ）</a>。</p>
+<h1 id="3、寻插件"><a href="#3、寻插件" class="headerlink" title="3、寻插件"></a>3、寻插件</h1><p>顾名思义，寻找能发送XML或者JSON的插件咯。<br>我使用的是菜单自定义_文本XMLjson <a href="https://pan.baidu.com/s/1WgN0Wkk-ofWGQG1PijfMkw" target="_blank" rel="noopener">百度云地址</a></p>
+<h1 id="4、技术总结"><a href="#4、技术总结" class="headerlink" title="4、技术总结"></a>4、技术总结</h1><p><strong>1、只能使用JSON格式。</strong><br><strong>2、内部的图片资源只能使用HTTP，不能使用HTTPS。</strong><br><strong>3、一般都是修改preview和icon里的值</strong></p>
+<hr>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"># 仅做参考</span><br><span class="line">&#123;</span><br><span class="line"><span class="attr">"app"</span>:<span class="string">"com.tencent.structmsg"</span>,</span><br><span class="line"><span class="attr">"desc"</span>:<span class="string">"新闻"</span>,</span><br><span class="line"><span class="attr">"view"</span>:<span class="string">"news"</span>,</span><br><span class="line"><span class="attr">"ver"</span>:<span class="string">"0.0.0.1"</span>,</span><br><span class="line"><span class="attr">"prompt"</span>:<span class="string">"98k.org"</span>,</span><br><span class="line"><span class="attr">"meta"</span>:&#123;<span class="attr">"news"</span>:</span><br><span class="line">	&#123;<span class="attr">"title"</span>:<span class="string">"98k.org"</span>,</span><br><span class="line">	 <span class="attr">"desc"</span>:<span class="string">"98k.org"</span>,</span><br><span class="line">	 <span class="attr">"preview"</span>:<span class="string">"https://98k.org/98k.png?ak=5cf900c4a2096"</span>,</span><br><span class="line">	 <span class="attr">"tag"</span>:<span class="string">"98k.org"</span>,</span><br><span class="line">	 <span class="attr">"jumpUrl"</span>:<span class="string">"98k.org"</span>,</span><br><span class="line">	 <span class="attr">"appid"</span>:<span class="number">100490701</span>, </span><br><span class="line">	 <span class="attr">"app_type"</span>:<span class="number">1</span>,</span><br><span class="line">	 <span class="attr">"action"</span>:<span class="string">""</span>,</span><br><span class="line">	 <span class="attr">"source_url"</span>:<span class="string">""</span>,</span><br><span class="line">	 <span class="attr">"source_icon"</span>:<span class="string">"98k.org"</span>,</span><br><span class="line">	 <span class="attr">"android_pkg_name"</span>:<span class="string">"com.zhihu.android"</span></span><br><span class="line">	 &#125;</span><br><span class="line">	&#125;,</span><br><span class="line"><span class="attr">"config"</span>:&#123;<span class="attr">"forward"</span>:<span class="literal">true</span>,<span class="attr">"type"</span>:<span class="string">"normal"</span>,<span class="attr">"autosize"</span>:<span class="literal">true</span>&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://pan.baidu.com/s/13zc8Vbs1U_v4AOJv1Ga8vw" target="_blank" rel="noopener">更多示例下载地址</a></p>
+]]></content>
+      <categories>
+        <category>XML</category>
+      </categories>
+      <tags>
+        <tag>XML</tag>
+        <tag>QQ</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>js读取usb扫码枪数据</title>
+    <url>/2020/05/20/javascript-to-read-scanner-data.html</url>
+    <content><![CDATA[<p>js读取usb扫码枪数据。</p>
+<a id="more"></a>
+<p>条码扫描器其实就是一种输入设备，跟键盘一样。在控制台打印扫描过程，可以看出，扫描过程就像是在键盘上敲击相应的键，keycode和键盘是一一对应的，只是输入速度(间隔时间)比物理键盘输入要快得多。我们可以通过监听输入间隔时间，来判断到底是键盘输入还是扫描输入。</p>
+<p>扫码枪输入的时间间隔一般在10毫秒以内，物理键盘输入要远大于这个数值，通常为80毫秒以上。因此，当输入间隔时间小于30毫秒时，判断为扫码枪输入，其余情况判断为键盘输入。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;<span class="comment">// 获取扫描的二维码</span></span><br><span class="line">  <span class="keyword">var</span> code = <span class="string">""</span>;</span><br><span class="line">  <span class="keyword">var</span> lastTime, nextTime;</span><br><span class="line">  <span class="keyword">var</span> lastCode, nextCode;</span><br><span class="line">  <span class="built_in">document</span>.onkeypress = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">      nextCode = e.which;</span><br><span class="line">      nextTime = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (lastCode != <span class="literal">null</span> &amp;&amp; lastTime != <span class="literal">null</span> &amp;&amp; nextTime - lastTime &lt;= <span class="number">30</span>) &#123;<span class="comment">// 扫码枪</span></span><br><span class="line">          code += <span class="built_in">String</span>.fromCharCode(lastCode);</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (lastCode != <span class="literal">null</span> &amp;&amp; lastTime != <span class="literal">null</span> &amp;&amp; nextTime - lastTime &gt; <span class="number">100</span>) &#123; <span class="comment">// 键盘</span></span><br><span class="line">          code = <span class="string">""</span>;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      lastCode = nextCode;</span><br><span class="line">      lastTime = nextTime;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.Template_rendering = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.onkeypress = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">          <span class="keyword">if</span> (e.which == <span class="number">13</span>) &#123;</span><br><span class="line">              <span class="built_in">console</span>.log(code);</span><br><span class="line">              <span class="comment">// $('#code').text(code)</span></span><br><span class="line">              readcode(&#123;<span class="attr">code</span>: code&#125;); <span class="comment">// 调用readcode方法</span></span><br><span class="line">              code = <span class="string">""</span>;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.Template_rendering();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>康虎云报表设计器设计出能读取多条数据的报表模板</title>
+    <url>/2020/05/25/kanghuyun-read-data-template.html</url>
+    <content><![CDATA[<p>康虎云报表设计器设计出能读取多条数据的报表模板。</p>
+<blockquote>
+<p>前言 康虎云是真的毒，全网几乎搜不到关于他的问题解决方案。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="设计器"><a href="#设计器" class="headerlink" title="设计器"></a>设计器</h2><p><img src="https://raw.githubusercontent.com/icooode/images-of-website/master/blog/kanghuyun/200525072554.png" alt="设计器"><br>以上是我的康虎云内所有字段。</p>
+<ol>
+<li><code>userInfo</code></li>
+<li><code>feedback</code><h2 id="我的JSON数据格式："><a href="#我的JSON数据格式：" class="headerlink" title="我的JSON数据格式："></a>我的JSON数据格式：</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;template&quot;: &quot;123.fr3&quot;,</span><br><span class="line">  &quot;ver&quot;: 4,</span><br><span class="line">  &quot;Preview&quot;: 0,</span><br><span class="line">  &quot;Duplex&quot;: 0,</span><br><span class="line">  &quot;Tables&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;Name&quot;: &quot;feedback&quot;,</span><br><span class="line">      &quot;Cols&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;type&quot;: &quot;int&quot;,</span><br><span class="line">          &quot;size&quot;: 0,</span><br><span class="line">          &quot;name&quot;: &quot;id&quot;,</span><br><span class="line">          &quot;required&quot;: false</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;type&quot;: &quot;str&quot;,</span><br><span class="line">          &quot;size&quot;: 255,</span><br><span class="line">          &quot;name&quot;: &quot;question&quot;,</span><br><span class="line">          &quot;required&quot;: false</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">      ],</span><br><span class="line">      &quot;Data&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;id&quot;: 0,</span><br><span class="line">          &quot;question&quot;: &quot;这是西服上装正面领子返修问题。05&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;id&quot;: 1,</span><br><span class="line">          &quot;question&quot;: &quot;这是西服上装背面袖子返修问题。08&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;id&quot;: 2,</span><br><span class="line">          &quot;question&quot;: &quot;这是西服上装其他返修问题。19&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;id&quot;: 3,</span><br><span class="line">          &quot;question&quot;: &quot;这是西服上装其他返修问题。20&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;id&quot;: 4,</span><br><span class="line">          &quot;question&quot;: &quot;这是西服上装其他返修问题。21&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;id&quot;: 5,</span><br><span class="line">          &quot;question&quot;: &quot;这是西服上装其他返修问题。22&quot;</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;Name&quot;: &quot;userInfo&quot;,</span><br><span class="line">      &quot;Cols&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;type&quot;: &quot;str&quot;,</span><br><span class="line">          &quot;size&quot;: 255,</span><br><span class="line">          &quot;name&quot;: &quot;userName&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;type&quot;: &quot;str&quot;,</span><br><span class="line">          &quot;size&quot;: 255,</span><br><span class="line">          &quot;name&quot;: &quot;liushui&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;type&quot;: &quot;str&quot;,</span><br><span class="line">          &quot;size&quot;: 255,</span><br><span class="line">          &quot;name&quot;: &quot;createTime&quot;</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">      ],</span><br><span class="line">      &quot;Data&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;userName&quot;: &quot;测试数据&quot;,</span><br><span class="line">          &quot;liushui&quot;: &quot;1&quot;,</span><br><span class="line">          &quot;createTime&quot;: &quot;2020&#x2F;5&#x2F;25 上午10:05:57&quot;,</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><h3 id="这是我拉长明细数据-DetailData的效果"><a href="#这是我拉长明细数据-DetailData的效果" class="headerlink" title="这是我拉长明细数据 DetailData的效果"></a>这是我拉长明细数据 DetailData的效果</h3><img src="https://raw.githubusercontent.com/icooode/images-of-website/master/blog/kanghuyun/200525073306.png" alt="效果图1"><h3 id="这是我拉短明细数据-DetailData的效果"><a href="#这是我拉短明细数据-DetailData的效果" class="headerlink" title="这是我拉短明细数据 DetailData的效果"></a>这是我拉短明细数据 DetailData的效果</h3><img src="https://raw.githubusercontent.com/icooode/images-of-website/master/blog/kanghuyun/200525073319.png" alt="效果图2"></li>
+</ol>
+<h2 id="顺带一嘴哈"><a href="#顺带一嘴哈" class="headerlink" title="顺带一嘴哈"></a>顺带一嘴哈</h2><p>如果右边没有显示数据和字段。也就是这个。<br><img src="https://raw.githubusercontent.com/icooode/images-of-website/master/blog/kanghuyun/200525074313.png" alt="数组字段"><br>那么我推荐你最好先把json数据模拟好。</p>
+<ol>
+<li>打开<code>康虎云路径/cfprint/cfprint.exe</code>文件。这一步是启动康虎云，如果你已经启动了则无视这步骤。</li>
+<li>双击<strong><em>设计</em></strong>，把你刚刚模拟好的JSON数据放进去，点击设计按钮，你就会发现右侧出现这些字段了。<br><img src="https://raw.githubusercontent.com/icooode/images-of-website/master/blog/kanghuyun/200525074713.png" alt="点击设计按钮"></li>
+</ol>
+<h2 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h2><p>这也算是大功告成了吧！</p>
+<h2 id="参考网站"><a href="#参考网站" class="headerlink" title="参考网站"></a>参考网站</h2><p><a href="http://www.khcloud.net/manaual/cfprint/index.html" target="_blank" rel="noopener">http://www.khcloud.net/manaual/cfprint/index.html</a></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>康虎云</tag>
+        <tag>打印机</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>linux下设置mysql密码之密码正确也无法进入</title>
+    <url>/2020/05/08/linux-set-mysql-password.html</url>
+    <content><![CDATA[<p>当你尝试了所有一切，其实都生效了，但你还是不能登进mysql里了，是不是感觉很气。</p>
+<a id="more"></a>
+<p>我本打算用python里的pymysql然后在使用lpthw.web撸个普通的由python写的博客，然后我就开始了我这两天掉坑之旅。<br>只是因为pymysql连接mysql数据库被 <code>Access denied for user &#39;root&#39;@&#39;localhost&#39;。</code>呵，无情的拦截。<br>其实是因为mysql没有设置密码。其实你是设置了只是还有地方没配置好。<br>我用了两种方式：<br>一是（这个是不需要进mysql）：<br><code>mysql_secure_installation</code><br>二是（这个需要进mysql里操作）：<br><code>GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;123456&#39; WITH GRANT OPTION;</code><br><code>flush privileges;</code><br>这两者其实都生效了，但你还是不用密码就登进mysql里了，是不是感觉很气。<br><code>$ sudo mysql -u root # 进入你的mysql</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql&gt; USE mysql;</span><br><span class="line">mysql&gt; UPDATE user SET plugin=<span class="string">'mysql_native_password'</span> WHERE User=<span class="string">'root'</span>; <span class="comment"># 只要把plugin修改成mysql_native_password就好了</span></span><br><span class="line">mysql&gt; FLUSH PRIVILEGES;</span><br><span class="line">mysql&gt; <span class="built_in">exit</span>;</span><br><span class="line"></span><br><span class="line">$ service mysql restart <span class="comment"># 重启mysql(windows则使用net stop mysql)</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>参考网站：<br>一：<a href="http://stackmirror.caup.cn/page/s1jf9ragkt9w" target="_blank" rel="noopener">http://stackmirror.caup.cn/page/s1jf9ragkt9w</a><br>二：<a href="https://www.server-world.info/en/note?os=Ubuntu_18.04&amp;p=mariadb&amp;f=1" target="_blank" rel="noopener">https://www.server-world.info/en/note?os=Ubuntu_18.04&amp;p=mariadb&amp;f=1</a></p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>纯代码实现wordpress在线人数统计</title>
+    <url>/2020/04/20/using-code-to-count-online-number.html</url>
+    <content><![CDATA[<p>纯代码实现wordpress在线人数统计。</p>
+<blockquote>
+<p>本文转载于：<a href="https://www.luoyechenfei.com/html/2630.html" target="_blank" rel="noopener">https://www.luoyechenfei.com/html/2630.html</a></p>
+</blockquote>
+<a id="more"></a>
+
+<p><strong><em>实现代码：</em></strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">//首先你要有读写文件的权限，首次访问肯不显示，正常情况刷新即可  </span></span><br><span class="line">$online_log = <span class="string">"maplers.dat"</span>; <span class="comment">//保存人数的文件到根目录,  </span></span><br><span class="line">$timeout = <span class="number">30</span>;<span class="comment">//30秒内没动作者,认为掉线  </span></span><br><span class="line">$entries = file($online_log);</span><br><span class="line">$temp = <span class="keyword">array</span>();</span><br><span class="line"><span class="keyword">for</span> ($i=<span class="number">0</span>;$i&lt;count($entries);$i++)&#123;</span><br><span class="line">$entry = explode(<span class="string">","</span>,trim($entries[$i]));</span><br><span class="line"><span class="keyword">if</span>(($entry[<span class="number">0</span>] != getenv(<span class="string">'REMOTE_ADDR'</span>)) &amp;&amp; ($entry[<span class="number">1</span>] &gt; time())) &#123;</span><br><span class="line">array_push($temp,$entry[<span class="number">0</span>].<span class="string">","</span>.$entry[<span class="number">1</span>].<span class="string">"\n"</span>); <span class="comment">//取出其他浏览者的信息,并去掉超时者,保存进$temp  </span></span><br><span class="line">&#125;&#125;</span><br><span class="line">array_push($temp,getenv(<span class="string">'REMOTE_ADDR'</span>).<span class="string">","</span>.(time() + ($timeout)).<span class="string">"\n"</span>); <span class="comment">//更新浏览者的时间  </span></span><br><span class="line">$maplers = count($temp); <span class="comment">//计算在线人数  </span></span><br><span class="line">$entries = implode(<span class="string">""</span>,$temp);</span><br><span class="line"><span class="comment">//写入文件  </span></span><br><span class="line">$fp = fopen($online_log,<span class="string">"w"</span>);</span><br><span class="line">flock($fp,LOCK_EX); <span class="comment">//flock() 不能在NFS以及其他的一些网络文件系统中正常工作  </span></span><br><span class="line">fputs($fp,$entries);</span><br><span class="line">flock($fp,LOCK_UN);</span><br><span class="line">fclose($fp);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"在线人数："</span>.$maplers.<span class="string">"人"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong><em>我的方式</em></strong><br>在functions.php下新增一个函数。</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">show_online_count</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">//首先你要有读写文件的权限，首次访问肯不显示，正常情况刷新即可  </span></span><br><span class="line">	$online_log = <span class="string">"maplers.dat"</span>; <span class="comment">//保存人数的文件到根目录,  </span></span><br><span class="line">	$timeout = <span class="number">30</span>;<span class="comment">//30秒内没动作者,认为掉线  </span></span><br><span class="line">	$entries = file($online_log);</span><br><span class="line">	$temp = <span class="keyword">array</span>();</span><br><span class="line">	<span class="keyword">for</span> ($i=<span class="number">0</span>;$i&lt;count($entries);$i++)&#123;</span><br><span class="line">	$entry = explode(<span class="string">","</span>,trim($entries[$i]));</span><br><span class="line">	<span class="keyword">if</span>(($entry[<span class="number">0</span>] != getenv(<span class="string">'REMOTE_ADDR'</span>)) &amp;&amp; ($entry[<span class="number">1</span>] &gt; time())) &#123;</span><br><span class="line">	array_push($temp,$entry[<span class="number">0</span>].<span class="string">","</span>.$entry[<span class="number">1</span>].<span class="string">"\n"</span>); <span class="comment">//取出其他浏览者的信息,并去掉超时者,保存进$temp  </span></span><br><span class="line">	&#125;&#125;</span><br><span class="line">	array_push($temp,getenv(<span class="string">'REMOTE_ADDR'</span>).<span class="string">","</span>.(time() + ($timeout)).<span class="string">"\n"</span>); <span class="comment">//更新浏览者的时间  </span></span><br><span class="line">	$maplers = count($temp); <span class="comment">//计算在线人数  </span></span><br><span class="line">	$entries = implode(<span class="string">""</span>,$temp);</span><br><span class="line">	<span class="comment">//写入文件  </span></span><br><span class="line">	$fp = fopen($online_log,<span class="string">"w"</span>);</span><br><span class="line">	flock($fp,LOCK_EX); <span class="comment">//flock() 不能在NFS以及其他的一些网络文件系统中正常工作  </span></span><br><span class="line">	fputs($fp,$entries);</span><br><span class="line">	flock($fp,LOCK_UN);</span><br><span class="line">	fclose($fp);</span><br><span class="line">	<span class="keyword">return</span> $maplers;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>之后在<strong><em>footer.php</em></strong>里，添加到你想加的地方去。<br><code>&lt;?php echo &#39; 在线人数：&#39;.show_online_count().&#39;人&#39;; ?&gt;</code><br><img src="https://img2020.cnblogs.com/blog/1822317/202004/1822317-20200420200941136-1604143353.png" alt=""></p>
+]]></content>
+      <categories>
+        <category>wordpress</category>
+      </categories>
+      <tags>
+        <tag>wordpress</tag>
+      </tags>
+  </entry>
+</search>
