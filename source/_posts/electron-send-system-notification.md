@@ -13,7 +13,7 @@ category: 前端
 我在百度搜索到，electon如果需要用到这个`Notification`功能，那么需要注册个AppID，看到这里我是一脸懵逼(找不到那个问题贴了)。
 又百度发现，害，原来这么简单啊。
 1、 先在你的`package.json`里添加：
-```
+```bash
 "build": {
     "appId": "com.example.app"
 }
@@ -23,7 +23,7 @@ category: 前端
 2、然后在你的入口`main.js`里，添加`app.setUserModelId("com.electron.这里改成你package.json里name");`这串代码。
 
 3、最后，在你需要弹窗的地方，添加以下代码（我是绑定给按钮，所以我在按钮点击事件里添加的）：
-```
+```js
 $testBtn.on('click', () => {
   let option = {
     title: "你订阅冰黎的博客更新了",                          // 通知标题
